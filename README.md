@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 💎 Stone & Bloom - Premium Jewelry E-Commerce
 
 A complete MERN stack jewelry e-commerce website with **Admin Panel**, **Pakistani prices (PKR)**, and **modern features**.
@@ -204,3 +205,6 @@ This project is created for educational/demo purposes.
 **Made with ❤️ in Pakistan**
 
 **Stone & Bloom - Where Elegance Meets Affordability**
+=======
+# stone_bloom
+>>>>>>> 06901111374a0fd7aaa5b95c37026255ba4f5d64
