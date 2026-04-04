@@ -9,11 +9,14 @@
     "dev": "nodemon server.js",
     "seed": "node seeder.js"
   },
-  "keywords": [
-    "ecommerce",
-    "pakistan",
-    "mern"
-  ],
+  "engines": {
+  "node": "18.x"
+},
+"keywords": [
+  "ecommerce",
+  "pakistan",
+  "mern"
+],
   "author": "",
   "license": "ISC",
   "dependencies": {
