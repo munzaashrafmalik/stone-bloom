@@ -51,6 +51,25 @@ app.use((err, req, res, next) => {
 // Database connection
 const PORT = process.env.PORT || 5000;
 
+// Seed database (run once, then remove)
+const seedDatabase = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('✅ Connected to MongoDB for seeding');
+    const { execSync } = await import('child_process');
+    execSync('node seeder.js', { stdio: 'inherit' });
+    console.log('🌱 Database seeded successfully');
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('❌ Seed error:', err);
+    process.exit(1);
+  }
+};
+
+// Uncomment to seed: seedDatabase();
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
