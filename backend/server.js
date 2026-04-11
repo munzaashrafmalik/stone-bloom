@@ -68,7 +68,8 @@ const seedDatabase = async () => {
   }
 };
 
-// Uncomment to seed: seedDatabase();
+// Run seeder (Comment out after first run)
+seedDatabase();
 
 mongoose
   .connect(process.env.MONGODB_URI)
