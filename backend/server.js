@@ -39,6 +39,20 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Pakistani Store API is running' });
 });
 
+// Seed Route (Run once from browser to add products)
+app.get('/api/seed', async (req, res) => {
+  try {
+    const { default: Product } = await import('./models/Product.js');
+    const { default: User } = await import('./models/User.js');
+    const { execSync } = await import('child_process');
+    execSync('node seeder.js', { stdio: 'inherit' });
+    res.json({ message: '✅ Database seeded successfully! Refresh your store.' });
+  } catch (err) {
+    console.error('Seed error:', err);
+    res.status(500).json({ message: 'Seed failed', error: err.message });
+  }
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
