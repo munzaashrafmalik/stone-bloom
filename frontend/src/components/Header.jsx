@@ -33,7 +33,7 @@ const Header = () => {
           <div className="container">
             <div style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <div style={{ display: 'inline-block', animation: 'scroll-left 20s linear infinite' }}>
-                <span>💎 <strong>EID SALE!</strong> Up to 40% OFF on All Earrings | 🚚 Free Shipping on Orders Above Rs. 5,000 | 🎁 Special EID Collection Available Now!</span>
+                <span>✨ <strong>New Collection!</strong> Trendy Jewelry Starting at Rs. 350 | 🚚 Free Shipping on Orders Above Rs. 5,000</span>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '15px', alignItems: 'center', float: 'right' }}>
