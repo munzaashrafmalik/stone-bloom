@@ -69,7 +69,7 @@ const seedDatabase = async () => {
 };
 
 // Run seeder (Comment out after first run)
-seedDatabase();
+// seedDatabase();
 
 mongoose
   .connect(process.env.MONGODB_URI)
