@@ -11,6 +11,10 @@ import authRoutes from './routes/auth.js';
 import orderRoutes from './routes/orders.js';
 import userRoutes from './routes/users.js';
 import paymentRoutes from './routes/payment.js';
+import contactRoutes from './routes/contact.js';
+import pageRoutes from './routes/pages.js';
+import faqRoutes from './routes/faq.js';
+import newsletterRoutes from './routes/newsletter.js';
 
 dotenv.config();
 
@@ -33,11 +37,17 @@ app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/pages', pageRoutes);
+app.use('/api/faq', faqRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Pakistani Store API is running' });
 });
+
+// Seed Route - REMOVED for security
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -50,6 +60,26 @@ app.use((err, req, res, next) => {
 
 // Database connection
 const PORT = process.env.PORT || 5000;
+
+// Seed database (run once, then remove)
+const seedDatabase = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('✅ Connected to MongoDB for seeding');
+    const { execSync } = await import('child_process');
+    execSync('node seeder.js', { stdio: 'inherit' });
+    console.log('🌱 Database seeded successfully');
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('❌ Seed error:', err);
+    process.exit(1);
+  }
+};
+
+// Run seeder (Comment out after first run)
+// seedDatabase();
 
 mongoose
   .connect(process.env.MONGODB_URI)
